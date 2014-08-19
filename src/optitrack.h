@@ -22,6 +22,7 @@ class OptiTrack {
 		bool getOrientation(int rigidBodyId, float& yaw, float& pitch, float& roll);
 		bool getOrientation(int rigidBodyId, float& qx, float& qy, float& qz, float& qw);
 		bool getPositionAndOrientation(int rigidBodyId, float& x, float& y, float& z, float& yaw, float& pitch, float& roll);
+		bool getPositionAndOrientation(int rigidBodyId, float& x, float& y, float& z, float& qx, float& qy, float& qz, float& qw);
 		size_t getNumberOfCameras() const;
 		size_t getNumberOfRigidBodies() const;
 		std::string getNameOfCamera(int id) const;

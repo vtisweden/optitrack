@@ -123,6 +123,18 @@ bool OptiTrack::getPositionAndOrientation(int rigidBodyId, float& x, float& y, f
 	return false;
 }
 
+bool OptiTrack::getPositionAndOrientation(int rigidBodyId, float& x, float& y, float& z, float& qx, float& qy, float& qz, float& qw)
+{
+	if(m_initialized &&  TT_Update() == NPRESULT_SUCCESS ) {
+		float yaw, pitch, roll;
+		TT_TrackableLocation( rigidBodyId, &x, &y, &z, &qx, &qy, &qz, &qw, &yaw, &pitch, &roll);
+		if( TT_IsTrackableTracked(rigidBodyId)) {
+			return true;
+		}
+	}
+	return false;
+}
+
 int OptiTrack::checkResult(int result) {
 	if (result != NPRESULT_SUCCESS) {
 		std::cerr << "Error: " << TT_GetResultString(result) << std::endl;
